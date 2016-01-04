@@ -13,10 +13,10 @@
 #import "UIScrollView+SVPullToRefresh.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
-NSArray *categoriesName;
-UIRefreshControl * refreshController;
-
-@interface categoriesViewController ()
+@interface categoriesViewController () {
+    NSArray *categoriesName;
+    UIRefreshControl * refreshController;
+}
 
 @end
 
@@ -33,7 +33,7 @@ UIRefreshControl * refreshController;
     [refreshController addTarget:self action: @selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     //[self.categoriesTableView addSubview:refreshController];
     //[self.categoriesTableView sendSubviewToBack:refreshController];
-    self.categoriesTableView.bottomRefreshControl=refreshController;
+    self.categoriesTableView.bottomRefreshControl = refreshController;
 }
 
 - (void)handleRefresh:(UIRefreshControl *)refreshControl {
@@ -93,7 +93,7 @@ UIRefreshControl * refreshController;
     if ([segue.identifier isEqualToString:@"categories"]) {
         NSIndexPath *indexPath = [self.categoriesTableView indexPathForSelectedRow];
         testViewController *testViewController = segue.destinationViewController;
-        NSDictionary *theDic=[categoriesName objectAtIndex: indexPath.row ];
+        NSDictionary *theDic = [categoriesName objectAtIndex: indexPath.row ];
         testViewController.categoryType = [ theDic objectForKey:@"id"];
         testViewController.categoryTypeName = [ theDic objectForKey:@"name"];
        // NSLog(@"%@",[ theDic objectForKey:@"id"]);
